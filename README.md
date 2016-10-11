@@ -20,6 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-logger = ColoredLog::Log.new(filename)
+logger = ColoredLog::Log.new(filename, level: Logger::INFO, progname: 'Hello')
 
 logger.info('Hello World!')
+
+OUTPUT: 
+11.10.2016 11:19:28.015797 (#4833)[Hello:WARN]: Hello World!
