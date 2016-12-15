@@ -23,8 +23,6 @@ module ColoredLog
     #   (@formatter || @default_formatter).call(severity, datetime, progname, msg)
     # end
     class CFormatter
-      Format = "%s (#%d)[%s:%5s]: %s\n".freeze
-
       attr_accessor :datetime_format
       attr_accessor :severity
 
@@ -56,7 +54,8 @@ module ColoredLog
 
       def call(severity, time, progname, msg)
         @severity = severity.to_sym
-        Format % [format_datetime(time), $$, colored(progname), colored(severity), msg2str(msg)]
+        msg = colored("[#{progname}:#{severity}]: #{msg2str(msg)}")
+        "#{format_datetime(time)} (#{$$}) #{msg}\n"
       end
 
       private
