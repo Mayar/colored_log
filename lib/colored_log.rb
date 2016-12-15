@@ -65,16 +65,14 @@ module ColoredLog
       end
 
       def msg2str(msg)
-        res = case msg
-                when ::String
-                  msg
-                when ::Exception
-                  "#{ msg.message } (#{ msg.class })\n" <<
-                      (msg.backtrace || []).join("\n")
-                else
-                  msg.inspect
-              end
-        colored(res)
+        case msg
+          when ::String
+            msg
+          when ::Exception
+            "#{ msg.message } (#{ msg.class })\n" << (msg.backtrace || []).join("\n")
+          else
+            msg.inspect
+        end
       end
     end
   end
