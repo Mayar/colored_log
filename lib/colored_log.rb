@@ -39,7 +39,7 @@ module ColoredLog
                   when :DEBUG
                     '38;5;240'
                   when :INFO
-                    '38;5;47'
+                    nil
                   when :WARN
                     '38;5;225'
                   when :ERROR
