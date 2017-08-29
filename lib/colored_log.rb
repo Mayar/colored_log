@@ -55,7 +55,7 @@ module ColoredLog
       def call(severity, time, progname, msg)
         @severity = severity.to_sym
         msg = colored("[#{progname}:#{severity}]: #{msg2str(msg)}")
-        "#{format_datetime(time)} (#{$$}) #{msg}\n"
+        "#{format_datetime(time)} (#{Thread.current[:request_id] || $$}) #{msg}\n"
       end
 
       private
